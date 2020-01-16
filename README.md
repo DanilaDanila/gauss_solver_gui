@@ -30,6 +30,12 @@
   ![Result example 0](https://github.com/DanilaDanila/gauss_solver_gui/blob/master/images/img2.png)
   
   ---
+  
+  Difficult example
+  
+  ![Difficult matrix](https://github.com/DanilaDanila/gauss_solver_gui/blob/master/images/img5.png)
+  
+  ---
 
   Example with no solution
   
