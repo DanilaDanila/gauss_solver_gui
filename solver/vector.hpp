@@ -38,7 +38,7 @@ public:
 
 	void realloc(const size_t &new_capacity_);
 
-	const size_t size();
+    const size_t size();
 	const size_t size() const;
 
 	T &operator[](const size_t&);

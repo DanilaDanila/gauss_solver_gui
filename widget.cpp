@@ -17,7 +17,7 @@ Widget::Widget(QWidget *parent): QWidget(parent)
     main_layout->setAlignment(Qt::AlignCenter);
         enter_slau_msg_lbl = new QLabel(this);
         enter_slau_msg_lbl->setText(tr("Введите СЛАУ:"));
-        enter_slau_msg_lbl->setFixedHeight(40);
+        enter_slau_msg_lbl->setFixedHeight(30);
         main_layout->addWidget(enter_slau_msg_lbl, 0);
 
         pref_layout = new QHBoxLayout();
@@ -163,7 +163,15 @@ void Widget::solve()
 
     if(solution.size() == 0)
     {
-        out<<"Решений нет";
+        out<<"СЛАУ:\n"
+           <<as_slau(slau)<<"\n"
+
+           <<"Расширенная матрица СЛАУ:\n"
+           <<as_extended_matrix(slau)<<"\n"
+
+           <<"Приведённая СЛАУ:\n"
+           <<as_extended_matrix(triangulate(slau))<<"\n"
+           <<"Решений нет";
     }
     else
     {

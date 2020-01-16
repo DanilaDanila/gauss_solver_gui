@@ -318,11 +318,32 @@ const Vector<Vector<Fract>> get_solution(const Vector<Vector<int>> &sslau)
 {
     Vector<Vector<int>> slau = triangulate(sslau);
 
+    bool is_no_solution = false;
+
+    for(unsigned row = 0; row<slau.size(); ++row)
+    {
+        unsigned ssum = 0;
+        for(unsigned i=0; i<slau[row].size()-1; ++i)
+            ssum += slau[row][i] * slau[row][i];
+
+        if((ssum == 0) && (slau[row][slau[row].size()-1] != 0))
+        {
+            is_no_solution = true;
+            break;
+        }
+    }
+
+    if(is_no_solution)
+    {
+        return Vector<Vector<Fract>>();
+    }
+
     size_t rank = triangle_matrix_rank(slau);
 
     size_t vars_count = slau[0].size()-1;
     size_t fixed_vars_count = vars_count - rank;
     size_t vec_dim = fixed_vars_count + 1;
+
     Vector<Vector<Fract>> vars(vars_count);
 
     for(size_t i=0; i<vars_count; ++i)
