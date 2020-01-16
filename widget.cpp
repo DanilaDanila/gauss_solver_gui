@@ -115,7 +115,7 @@ void Widget::rebuildSLAU()
         for(unsigned j=0; j<edits_count-1; ++j)
         {
             QLabel *label = new QLabel(this);
-            std::string str = "*X" + std::to_string(j);
+            std::string str = "*X" + std::to_string(j+1);
             if(j == edits_count-2)
                 str += "=";
             else
