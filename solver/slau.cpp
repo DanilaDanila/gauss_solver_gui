@@ -248,14 +248,25 @@ const Vector<Vector<T>> triangulate(const Vector<Vector<T>> &sslau)
                 unsigned y_num = 0;
                 while(y_num < y.size() && y[y_num] == 0) ++y_num;
 
-                if(x._at(x_num) == 0)
+                std::cerr<<"A: \n"
+                         <<x<<" "<<y<<"\n"
+                         <<x._at(x_num)<<" "<<y._at(y_num)<<"\n";
+
+                if(x_num < y_num)
+                    return true;
+
+                if(x_num > y_num)
                     return false;
 
                 if(y._at(y_num) == 0)
                     return true;
 
+                if(y._at(x_num) == 0)
+                    return false;
+
                 return x._at(x_num)*x._at(x_num) < y._at(y_num)*y._at(y_num);
             });
+        std::cerr<<"SORTED:\n"<<as_extended_matrix(slau)<<"\n";
 
         int line;
         while(line = findLineWithSameLenAs(slau, row), line != -1)
@@ -317,6 +328,7 @@ const Vector<Vector<T>> triangulate(const Vector<Vector<T>> &sslau)
 const Vector<Vector<Fract>> get_solution(const Vector<Vector<int>> &sslau)
 {
     Vector<Vector<int>> slau = triangulate(sslau);
+    std::cerr<<"Triangulated:\n"<<as_extended_matrix(slau)<<"\n";
 
     bool is_no_solution = false;
 

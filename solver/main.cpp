@@ -51,8 +51,12 @@ int main()
 							   {3, 2, 1, 1, -3},
 							   {1, 3, -2, 2, -4}};
 
-	std::cout<<as_slau(slau4)<<"\n";
-	std::cout<<as_matrix(get_solution(slau4))<<"\n\n";
+	Vector<Vector<int>> slau5={{0, 0, 1, 3},
+							   {1, 0, 1, 4},
+							   {0, 1, 0, 5}};
+
+	std::cout<<as_slau(slau5)<<"\n";
+	std::cout<<as_matrix(get_solution(slau5))<<"\n\n";
 
 	return 0;
 }
